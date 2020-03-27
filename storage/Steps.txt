@@ -1,0 +1,23 @@
+cd storage/
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+
+gsutil mb gs://my1testbucket
+gsutil mb gs://my2blurredbuucket
+
+gsutil defacl set public-read gs://my1testbucket
+gsutil defacl set public-read gs://my2blurredbuucket
+
+export GOOGLE_APPLICATION_CREDENTIALS="/mnt/e/AgSpert/GoogleCloud/gcs_tut/gcs-tut-01799ade1ebc.json"
+
+export CLOUD_STORAGE_BUCKET="my1testbucket"
+export CLOUD_BLURRED_BUCKET="my2blurredbuucket"
+
+# python3 main.py
+
+gcloud app deploy
+
+gcloud app browse
+
+
